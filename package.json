@@ -1,0 +1,28 @@
+{
+  "name": "mvp-interviewq",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "docker": "^1.0.0",
+    "express": "^4.16.3",
+    "webpack": "^4.16.4",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "babel-node src/server/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/The31/MPV-interviewQ.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/The31/MPV-interviewQ/issues"
+  },
+  "homepage": "https://github.com/The31/MPV-interviewQ#readme"
+}
