@@ -1,34 +1,32 @@
 const path = require('path');
-const entryFile = path.resolve(__dirname, 'src', 'client', 'app.js');
-const outputDir = path.resolve(__dirname, 'public');
+
+const source = path.join(__dirname, './src/client');
+const destination = path.join(__dirname, './src/client/dist');
+
 module.exports = {
- entry: ['babel-polyfill', entryFile],
- output: {
-      filename: 'bundle.js',
-      path: outputDir
- },
- module: {
-      rules: [
-       
-        {
-           test: /\.(js|jsx)$/,
-           loader: 'babel-loader',
-           exclude: /node_modules/
-         },
-         {
-           test: /\.(scss|css)$/,
-           use: [
-              {
-                loader: 'style-loader'
-              }, 
-              { 
-                loader: 'css-loader',
-              }, 
-              { 
-                 loader: 'sass-loader' 
-              }
-            ]
-          }
-       ]
- }
+  entry: `${source}/App.jsx`,
+  output: {
+    filename: 'bundle.js',
+    path: destination,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.jsx?/,
+        include: source,
+        loader: 'babel-loader',
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
