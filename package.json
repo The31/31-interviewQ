@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "body-parser": "^1.18.3",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-polyfill": "^6.26.0",
@@ -36,6 +37,7 @@
     "sass-loader": "^7.1.0",
     "style-loader": "^0.21.0"
   },
+  "proxy": "http://localhost:8080",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/The31/31-interviewQ.git"

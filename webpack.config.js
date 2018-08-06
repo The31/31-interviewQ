@@ -1,28 +1,47 @@
 const path = require('path');
+require('babel-polyfill');
 
-const source = path.join(__dirname, './src/client');
-const destination = path.join(__dirname, './src/client/dist');
+const SRC_DIR = path.join(__dirname, '/src/client');
+const DIST_DIR = path.join(__dirname, '/dist');
 
 module.exports = {
-  entry: `${source}/App.jsx`,
+  entry: `${SRC_DIR}/index.jsx`,
   output: {
     filename: 'bundle.js',
-    path: destination,
+    path: DIST_DIR,
   },
+  resolve: { extensions: ['.js', '.jsx'] },
   module: {
     rules: [
       {
-        test: /\.jsx?/,
-        include: source,
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
         loader: 'babel-loader',
       },
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.html$/,
         use: [
           {
-            loader: 'url-loader',
+            loader: 'html-loader',
             options: {
-              limit: 8192,
+              minimize: true,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader',
+      },
+      {
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        use: [
+          'file-loader',
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              bypassOnDebug: true, // webpack@1.x
+              disable: true, // webpack@2.x and newer
             },
           },
         ],
