@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
 
-app.use(express.static(path.join(__dirname, '/../../dist')));
+app.use(express.static(path.resolve(__dirname, '..', '..', 'dist')));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
